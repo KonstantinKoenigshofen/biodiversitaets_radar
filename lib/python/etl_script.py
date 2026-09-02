@@ -35,7 +35,13 @@ def extract_biodiversity_data(place_id=98502, days=14):
 # TRANSFORM
 #
 
-def transform_data(df):
+def transform_data(raw_data):
+
+    df = pd.json_normalize(raw_data)
+
+    # Falls gar keine Daten gefunden wurden, leere DataFrames zurückgeben
+    if df.empty:
+        return pd.DataFrame(), pd.DataFrame()
 
     columns_to_filter = [
     "id",
