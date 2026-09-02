@@ -1,0 +1,35 @@
+name: Weekly Biodiversity ETL
+
+on:
+  schedule:
+    # Jeden Montag um 3:00 Uhr
+    - cron: '0 3 * * 1'
+  
+  # Skript kann auch manuell auf Github gestartet werden
+  workflow_dispatch:
+
+jobs:
+  run-etl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code aus dem Repository holen
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+          cache: 'pip' 
+
+      - name: Abhängigkeiten installieren
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: ETL Skript ausführen
+        # Neon_Key übergeben
+        env:
+          NEON_DB_URL: ${{ secrets.NEON_DB_URL }}
+        run: python etl_script.py 
+        
