@@ -138,6 +138,7 @@ def load(df_species, df_observations, engine):
             if_exists='append',
             index=False
         )
+        print(f"Es wurden {len(df_observations)} neue Arten hinzugefügt!")
 
 
 
