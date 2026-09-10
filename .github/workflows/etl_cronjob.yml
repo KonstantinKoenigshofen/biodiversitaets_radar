@@ -36,7 +36,7 @@ jobs:
       - name: JSON-Dateien erstellen
         env:
           NEON_DB_URL: ${{ secrets.NEON_DB_URL}}
-        run: python export_data.py
+        run: python lib/python/export_data.py
 
       - name: JSON Dateien speichern
         run: |
