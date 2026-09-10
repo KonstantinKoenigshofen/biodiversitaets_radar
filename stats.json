@@ -1,0 +1,38 @@
+{
+    "top_5_species": [
+        {
+            "name": "Turmfalke",
+            "count": 3
+        },
+        {
+            "name": "Bosuil",
+            "count": 1
+        },
+        {
+            "name": "Bachstelze",
+            "count": 1
+        },
+        {
+            "name": "Eichelhäher",
+            "count": 1
+        },
+        {
+            "name": "Mönchsgrasmücke",
+            "count": 1
+        }
+    ],
+    "categories": [
+        {
+            "category": "Aves",
+            "count": 12
+        },
+        {
+            "category": "Mammalia",
+            "count": 2
+        },
+        {
+            "category": "Reptilia",
+            "count": 1
+        }
+    ]
+}
