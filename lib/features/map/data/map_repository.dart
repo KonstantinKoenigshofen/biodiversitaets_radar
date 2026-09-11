@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'map_observation_model.dart';
+import 'package:biodiversitaets_radar/features/stats/data/stats_model.dart';
 
 class MapRepository {
 
@@ -21,6 +22,19 @@ class MapRepository {
         return jsonList.map((json) => MapObservation.fromJson(json)).toList();
     } else {
         throw Exception('Fehler beim Laden der map_data.json');
+    }
+  }
+
+  Future<StatsModel> fetchStats() async {
+    final url = Uri.parse('https://konstantinkoenigshofen.github.io/biodiversitaets_radar/stats.json');
+
+    final response = await client.get(url);
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonMap = json.decode(response.body);
+      return StatsModel.fromJson(jsonMap);
+    } else {
+      throw Exception('Fehler beim Laden der stats.json');
     }
   }
 }
