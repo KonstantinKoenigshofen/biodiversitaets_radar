@@ -62,8 +62,13 @@ def transform_data(raw_data):
     df["longitude"] = df["location"].apply(lambda x: x[1] if isinstance(x, list) and len(x) >= 2 else None)
     df = df.drop(columns=["location"])
 
-    # Foto herausfiltern
-    df["photo_url"] = df["photos"].apply(lambda x: x[0]["url"] if isinstance(x, list) and len(x) > 0 and "url" in x[0] else None)    
+    # Foto herausfiltern und Auflösung auf medium setzten
+    df["photo_url"] = df["photos"].apply(
+        lambda x: str(x[0]["url"]).replace("square", "medium") 
+        if isinstance(x, list) and len(x) > 0 and "url" in x[0] 
+        else None
+    )
+    # df["photo_url"] = df["photos"].apply(lambda x: x[0]["url"] if isinstance(x, list) and len(x) > 0 and "url" in x[0] else None)    
     df = df.drop(columns=["photos"])
 
     # Daten für die zwei Tabellen aufteilen
