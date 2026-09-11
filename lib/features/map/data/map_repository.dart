@@ -9,7 +9,7 @@ class MapRepository {
   MapRepository({required this.client});
 
   Future<List<MapObservation>> fetchObservations() async {
-    final url = Uri.parse('https://github.com/KonstantinKoenigshofen/biodiversitaets_radar/map_data.json');
+    final url = Uri.parse('https://github.io/KonstantinKoenigshofen/biodiversitaets_radar/map_data.json');
 
     final response = await client.get(url);
 
