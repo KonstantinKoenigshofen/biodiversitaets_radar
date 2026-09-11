@@ -16,7 +16,7 @@ class MockHttpClient extends Mock implements http.Client {
       repository = MapRepository(client: mockClient);
     });
 
-    final tUrl = Uri.parse('https://github.io/KonstantinKoenigshofen/biodiversitaets_radar/map_data.json');
+    final tUrl = Uri.parse('https://konstantinkoenigshofen.github.io/biodiversitaets_radar/map_data.json');
 
     test('sollte eine Liste von MapObservation zurückgeben (HTTP 200)', () async {
       final jsonString = '[{"latitude": 52.15, "longitude": 9.95, "photo_url": "url", "species_guess": "Rotmilan"}]';

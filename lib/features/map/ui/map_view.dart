@@ -33,11 +33,39 @@ class MapView extends StatelessWidget {
                 point: LatLng(obs.latitude, obs.longitude),
                 width: 40,
                 height: 40,
-                child: const Icon(
-                  Icons.location_on, 
-                  color: Colors.red, 
-                  size: 40,
-                ),
+                child: GestureDetector( //Icon klickbar machen
+                  onTap: () {
+                    // Popup-Fenster
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text(obs.speciesGuess),
+                          // Bild anzeigen
+                          content: obs.photoUrl.isNotEmpty
+                            ? Image.network(
+                              obs.photoUrl,
+                              height: 250,
+                              fit: BoxFit.cover,
+                            )
+                            : const Text('Kein Foto verfügbar'),
+                          // Schließen-Button
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: const Text('Schließen'),
+                            ),
+                          ],
+                        );
+                      }
+                    );
+                  },
+                  child: const Icon(
+                    Icons.location_on, 
+                    color: Colors.red, 
+                    size: 40,
+                  ),
+                )
               );
             }).toList(),
           ),
