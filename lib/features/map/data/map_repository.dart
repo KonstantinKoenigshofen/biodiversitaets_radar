@@ -19,9 +19,8 @@ class MapRepository {
         
         // Elemente auf Model mappen
         return jsonList.map((json) => MapObservation.fromJson(json)).toList();
-      } else {
+    } else {
         throw Exception('Fehler beim Laden der map_data.json');
-      }
     }
-
+  }
 }
