@@ -11,7 +11,9 @@ import os
 
 # Extrahiert Observationsdaten von der INaturalist-API 
 # in einer bestimmten Region (98502 = Hildesheim) in einem bestimmten Zeitraum
-def extract_biodiversity_data(place_id=98502, days=14):
+# Niedersachen = 11135
+# Deutschland = 7207
+def extract_biodiversity_data(place_id=11135, days=14):
 
     timespan = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
 

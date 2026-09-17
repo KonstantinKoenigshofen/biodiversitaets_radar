@@ -67,69 +67,56 @@ class MapScreen extends StatelessWidget {
               title: const Text('Biodiversitäts-Radar'),
               centerTitle: true,
             ),
-            body: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,     
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Text
-                Center(
-                  child: SizedBox(
-                    width: 1000,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Card(
-                        elevation: 4,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // Textbereich
+                  Center(
+                    child: SizedBox(
+                      width: 1000,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+                          child: const Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Text("Lorem ipsum dolor sit amet..."),
+                          ),
                         ),
-                        // clipBehavior sorgt dafür, dass die Karte sauber innerhalb der runden Ecken abgeschnitten wird
-                        clipBehavior: Clip.antiAlias, 
-                        child: Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."),
                       ),
                     ),
                   ),
-                ),
-                // Karte
-                Expanded(
-                  flex: 2,
-                  child: SizedBox(
-                    width: 1000,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Card(
-                        elevation: 4,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
+                  
+                  // Karte 
+                  Center(
+                    child: SizedBox(
+                      height: 600, 
+                      width: 1000,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+                          clipBehavior: Clip.antiAlias, 
+                          child: MapView(observations: observations),
                         ),
-                        // clipBehavior sorgt dafür, dass die Karte sauber innerhalb der runden Ecken abgeschnitten wird
-                        clipBehavior: Clip.antiAlias, 
-                        child: MapView(observations: observations),
                       ),
                     ),
                   ),
-                ),
-                
-                // Dashboard
-                SizedBox(
-                  width: 1000,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      // clipBehavior sorgt dafür, dass die Karte sauber innerhalb der runden Ecken abgeschnitten wird
-                      clipBehavior: Clip.antiAlias, 
+                  
+                  // Dashboard 
+                  Center(
+                    child: SizedBox(
+                      width: 1000,
                       child: DashboardView(stats: stats),
                     ),
                   )
-                )
-              ],
+                ],
+              ),
             ),
           );
         }
-        
         return const Scaffold(body: Center(child: Text('Keine Daten gefunden.')));
       },
     );
