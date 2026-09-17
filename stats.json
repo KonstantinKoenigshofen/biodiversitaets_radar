@@ -23,16 +23,16 @@
     ],
     "categories": [
         {
-            "category": "Aves",
-            "count": 12
-        },
-        {
             "category": "Mammalia",
-            "count": 2
+            "count": 3
         },
         {
             "category": "Reptilia",
             "count": 1
+        },
+        {
+            "category": "Aves",
+            "count": 12
         }
     ]
 }
