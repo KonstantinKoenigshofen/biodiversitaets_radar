@@ -1,1 +1,5 @@
 # Biodiversitaets-Radar
+
+Ziel dieses Projektes war das Erstellen einer Internetseite, auf der aktuelle (wöchentliche Aktualisierung) Tierbeobachtungen in ganz Deutschland aus der iNaturalist-API auf einer interaktiven Karte dargestellt werden (Link: https://konstantinkoenigshofen.github.io/biodiversitaets_radar/).
+Die Daten werden dabei über ein ETL-Skript von der API geholt, bereinigt und anschließend in ein relationales Datenmodell auf eine Neon-Datenbank geladen. Das Skript wird wöchentlich über GitHub-Actions automatisch ausgeführt, wobei veraltete Daten zur Speicherplatzoptimierung gelöscht werden. Das Frontend wurde in Flutter erstellt, wobei die Daten als JSON-Dateien von der App abgerufen werden. Für die Visualisierung kommen eine OpenStreetMap-Integration (flutter_map) für die klickbaren Karten-Markierungen sowie Diagramme für die Statistiken zum Einsatz.
+Dieses Projekt ist aus eigener Initiative entstanden und diente dazu, erste Kenntnisse im Bereich Data Engineering und in der Entwicklung mit Flutter zu erlangen.
