@@ -13,7 +13,7 @@ import os
 # in einer bestimmten Region (98502 = Hildesheim) in einem bestimmten Zeitraum
 # Niedersachen = 11135
 # Deutschland = 7207
-def extract_biodiversity_data(place_id=11135, days=14):
+def extract_biodiversity_data(place_id=7207, days=14):
 
     timespan = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
 
