@@ -20,7 +20,7 @@ with engine.connect() as conn:
         """
     df_map = pd.read_sql(query_map, conn)
     # Also JSON abspeichern ("records" macht daraus eine JSON-Liste)
-    df_map.to_json("map_data.json", orient="records", force_ascii=False)
+    df_map.to_json("docs/map_data.json", orient="records", force_ascii=False)
     print(f"map_data.json wurde erstellt. {len(df_map)} Einträge wurden auf die Karte hinzugefügt.")
 
     #
@@ -54,7 +54,7 @@ with engine.connect() as conn:
         "categories": df_categories.to_dict(orient="records"),
     }
 
-    with open("stats.json", "w", encoding="utf-8") as f:
+    with open("docs/stats.json", "w", encoding="utf-8") as f:
         json.dump(stats_data, f, ensure_ascii=False, indent=4)
 
     print("stats.json erstellt.")

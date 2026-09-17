@@ -1,0 +1,42 @@
+{
+    "top_5_species": [
+        {
+            "name": "Erdkröte",
+            "count": 11
+        },
+        {
+            "name": "Westliche Blindschleiche",
+            "count": 5
+        },
+        {
+            "name": "Common Wood-Pigeon",
+            "count": 4
+        },
+        {
+            "name": "Ringeltaube",
+            "count": 4
+        },
+        {
+            "name": "Schlingnatter",
+            "count": 4
+        }
+    ],
+    "categories": [
+        {
+            "category": "Reptilia",
+            "count": 17
+        },
+        {
+            "category": "Aves",
+            "count": 72
+        },
+        {
+            "category": "Amphibia",
+            "count": 15
+        },
+        {
+            "category": "Mammalia",
+            "count": 12
+        }
+    ]
+}
