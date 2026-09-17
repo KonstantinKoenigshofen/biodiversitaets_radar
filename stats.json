@@ -1,37 +1,41 @@
 {
     "top_5_species": [
         {
-            "name": "Turmfalke",
-            "count": 3
+            "name": "Erdkröte",
+            "count": 11
         },
         {
-            "name": "Bachstelze",
-            "count": 1
+            "name": "Westliche Blindschleiche",
+            "count": 5
         },
         {
-            "name": "Bosuil",
-            "count": 1
+            "name": "Common Wood-Pigeon",
+            "count": 4
         },
         {
-            "name": "Eichelhäher",
-            "count": 1
+            "name": "Ringeltaube",
+            "count": 4
         },
         {
-            "name": "Mönchsgrasmücke",
-            "count": 1
+            "name": "Schlingnatter",
+            "count": 4
         }
     ],
     "categories": [
         {
-            "category": "Mammalia",
-            "count": 3
-        },
-        {
             "category": "Reptilia",
-            "count": 1
+            "count": 17
         },
         {
             "category": "Aves",
+            "count": 72
+        },
+        {
+            "category": "Amphibia",
+            "count": 15
+        },
+        {
+            "category": "Mammalia",
             "count": 12
         }
     ]
