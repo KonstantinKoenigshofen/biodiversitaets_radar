@@ -114,6 +114,12 @@ def load(df_species, df_observations, engine):
 
     with engine.begin() as conn:
 
+        # Löschen von alten Beobachtungen
+        delete_query = text("DELETE FROM observations WHERE observed_on < NOW() - INTERVAL '30 days'")
+        result = conn.execute(delete_query)
+        print(f"{result.rowcount} alte Beobachtungen (älter als 30 Tage) wurden gelöscht.")
+
+
         #
         # Tabelle "species"
         #
@@ -139,13 +145,24 @@ def load(df_species, df_observations, engine):
         #
         # Tabelle "observations"
         #
-        df_observations.to_sql(
-            name="observations",
-            con=conn,
-            if_exists='append',
-            index=False
-        )
-        print(f"Es wurden {len(df_observations)} neue Beobachtungen hinzugefügt!")
+
+        # Bestehende IDs holen um Duplikate zu vermeiden
+        existing_obs_df = pd.read_sql("SELECT id FROM observations", conn)
+        existing_obs_ids = existing_obs_df['id'].astype(str).tolist()
+
+        # Vorhandene Beobachtungen herausfiltern
+        df_observations_new = df_observations[~df_observations['id'].isin(existing_obs_ids)]
+
+        if not df_observations_new.empty:
+            df_observations_new.to_sql(
+                name="observations",
+                con=conn,
+                if_exists='append',
+                index=False
+            )
+            print(f"Es wurden {len(df_observations_new)} neue Beobachtungen hinzugefügt!")
+        else:
+            print("Keine neuen Beobachtungen gefunden.")
 
 
 

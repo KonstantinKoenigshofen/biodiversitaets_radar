@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/stats_model.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DashboardView extends StatelessWidget {
   final StatsModel stats;
@@ -91,7 +92,7 @@ class DashboardView extends StatelessWidget {
                         return ListTile(
                           contentPadding: EdgeInsets.zero,
                           // Ein passendes Icon zur Kategorie finden
-                          leading: Icon(_getIconForCategory(categoryName), color: Colors.grey[700]),
+                          leading: FaIcon(_getIconForCategory(categoryName), color: Colors.grey[700]),
                           title: Text(categoryName),
                           trailing: Text(
                             '${item['count']}', 
@@ -110,17 +111,14 @@ class DashboardView extends StatelessWidget {
     );
   }
 
-  // Gibt ein passendes Material-Icon für den lateinischen Namen zurück
-  IconData _getIconForCategory(String category) {
+// Gibt nun FontAwesome-Icons statt Material-Icons zurück
+  FaIconData _getIconForCategory(String category) {
     switch (category) {
-      case 'Aves': return Icons.pets; // Vögel
-      case 'Mammalia': return Icons.cruelty_free; // Säugetiere
-      case 'Amphibia': return Icons.water_drop; // Amphibien
-      case 'Reptilia': return Icons.eco; // Reptilien
-      case 'Insecta': return Icons.bug_report; // Insekten
-      case 'Plantae': return Icons.local_florist; // Pflanzen
-      case 'Fungi': return Icons.forest; // Pilze
-      default: return Icons.scatter_plot; // Unbekannt
+      case 'Aves': return FontAwesomeIcons.crow;       
+      case 'Mammalia': return FontAwesomeIcons.otter;  
+      case 'Amphibia': return FontAwesomeIcons.frog;   
+      case 'Reptilia': return FontAwesomeIcons.dragon; 
+      default: return FontAwesomeIcons.circleQuestion; // Unbekannt
     }
   }
 }

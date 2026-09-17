@@ -5,6 +5,7 @@ import 'features/map/data/map_repository.dart';
 import 'features/map/ui/map_view.dart';
 import 'features/stats/data/stats_model.dart';
 import 'features/stats/ui/dashboard_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 void main() {
@@ -75,18 +76,39 @@ class MapScreen extends StatelessWidget {
                     child: SizedBox(
                       width: 1000,
                       child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-                          child: const Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Text("Lorem ipsum dolor sit amet..."),
+                        padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Diese Seite zeigt Beobachtungen von Säugetieren, Vögeln, Amphibien und Reptilien in ganz Deutschland an. '
+                                'Dabei stammen die Daten aus der API von INaturalist und werden wöchentlich aktualisiert. Durch Klicken auf '
+                                'eine Markierung kann der Name der jeweiligen beobachteten Tierart sowie ein Bild angezeigt werden. '
+                                'Für weitere Informationen und den Programmcode:',
+                                style: TextStyle(fontSize: 16, height: 1.5),
+                              ),
+                              const SizedBox(height: 4),
+                              InkWell(
+                                onTap: () async {
+                                  final Uri url = Uri.parse('https://github.com/KonstantinKoenigshofen/biodiversitaets_radar');
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                                  }
+                                },
+                                child: Text(
+                                  'https://github.com/KonstantinKoenigshofen/biodiversitaets_radar',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.blue[700],
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
-                  ),
                   
                   // Karte 
                   Center(
